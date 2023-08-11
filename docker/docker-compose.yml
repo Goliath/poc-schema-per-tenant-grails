@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  db:
+    container_name: database
+    image: postgres:14.5
+    restart: always
+    environment:
+      POSTGRES_USER: dev
+      POSTGRES_PASSWORD: dev
+      POSTGRES_DB: mtPerSchemaDb
+
+    volumes:
+#      - ./postgresql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./postgresql/postgresql.conf:/etc/postgresql/postgresql.conf
+      - mtPerSchema-postgres-data:/var/lib/postgresql/data
+    ports:
+      - "54322:5432"
+    command: postgres -c config_file=/etc/postgresql/postgresql.conf
+
+volumes:
+  mtPerSchema-postgres-data: {}

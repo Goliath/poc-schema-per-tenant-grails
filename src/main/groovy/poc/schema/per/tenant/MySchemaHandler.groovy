@@ -10,6 +10,10 @@ class MySchemaHandler extends DefaultSchemaHandler {
 
     private List<String> validTenants = ['amazon', 'empik']
 
+    MySchemaHandler() {
+        super("SET SCHEMA '%s'", "CREATE SCHEMA '%s'", "public")
+    }
+
     @Override
     Collection<String> resolveSchemaNames(DataSource dataSource) {
         log.info("resolveSchemaNames()")

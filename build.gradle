@@ -58,6 +58,10 @@ dependencies {
     implementation "org.grails:grails-datastore-gorm-hibernate5:$gormVersion"   //ADDED
     implementation "org.grails.plugins:hibernate5:$gormVersion" //CHANGED
     implementation "org.hibernate:hibernate-core:5.6.11.Final"
+
+    implementation 'org.postgresql:postgresql:42.3.1'
+    implementation 'org.grails.plugins:postgresql-extensions:7.0.0'
+
     implementation "org.grails.plugins:events"
     implementation "org.grails.plugins:gsp"
     profile "org.grails.profiles:web"
