@@ -118,8 +118,8 @@ dataSource:
     url: "jdbc:postgresql://localhost:54322/mtPerSchemaDb"
     schemaHandler: poc.schema.per.tenant.MySchemaHandler
     properties:
-        initialSize: 3
-        maxActive: 40
-        minIdle: 3
+        initialSize: 10
+        maxActive: 10
+        minIdle: 10
         maxIdle: 10
-        minEvictableIdleTimeMillis: 5000
+        minEvictableIdleTimeMillis: 60000
