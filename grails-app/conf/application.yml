@@ -116,7 +116,7 @@ dataSource:
     password: dev
     dbCreate: create-drop
     url: "jdbc:postgresql://localhost:54322/mtPerSchemaDb"
-    schemaHandler: "com.adverity.mtenant.PostgresSchemaHandler"
+    schemaHandler: poc.schema.per.tenant.MySchemaHandler
     properties:
         initialSize: 3
         maxActive: 40
