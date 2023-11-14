@@ -10,7 +10,7 @@ grails:
             events: false
         multiTenancy:
             mode: SCHEMA
-            tenantResolverClass: poc.schema.per.tenant.MyFixedTenantResolver
+            tenantResolverClass: poc.schema.per.tenant.MyCustomTenantResolver
 info:
     app:
         name: '@info.app.name@'
@@ -118,8 +118,8 @@ dataSource:
     url: "jdbc:postgresql://localhost:54322/mtPerSchemaDb"
     schemaHandler: poc.schema.per.tenant.MySchemaHandler
     properties:
-        initialSize: 10
-        maxActive: 10
-        minIdle: 10
+        initialSize: 3
+        maxActive: 30
+        minIdle: 3
         maxIdle: 10
         minEvictableIdleTimeMillis: 60000

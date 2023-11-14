@@ -55,8 +55,12 @@ dependencies {
     implementation "org.grails.plugins:cache"
     implementation "org.grails.plugins:async"
     implementation "org.grails.plugins:scaffolding"
-    implementation "org.grails:grails-datastore-gorm-hibernate5:$gormVersion"   //ADDED
-    implementation "org.grails.plugins:hibernate5:$gormVersion" //CHANGED
+//    implementation "org.grails:grails-datastore-gorm-hibernate5:$gormVersion"   //ADDED
+    implementation files('/home/marcin/workspace/libs/gorm-hibernate5/grails-datastore-gorm-hibernate5/build/libs/grails-datastore-gorm-hibernate5-7.3.2-SNAPSHOT.jar')
+
+    implementation ("org.grails.plugins:hibernate5:$gormVersion") { //CHANGED
+        exclude(group: "org.grails", module: "grails-datastore-gorm-hibernate5")
+    }
     implementation "org.hibernate:hibernate-core:5.6.11.Final"
 
     implementation 'org.postgresql:postgresql:42.3.1'

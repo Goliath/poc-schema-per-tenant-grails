@@ -5,17 +5,12 @@ import grails.gorm.multitenancy.CurrentTenant
 import grails.gorm.multitenancy.Tenants
 import grails.gorm.transactions.Transactional
 
-import java.sql.Connection
-import java.sql.ResultSet
-
 class BookController {
 
     BookService bookService
     def dataSource
 
     static defaultAction = "list"
-
-
 
     @CurrentTenant
     def list() {
@@ -31,7 +26,7 @@ class BookController {
     }
 
     def listWithService() {
-        render(bookService.getUsers() as JSON)
+        render(bookService.getBooks() as JSON)
     }
 
 
@@ -39,7 +34,24 @@ class BookController {
     @Transactional
     def create() {
         log.info "current tenant = ${Tenants.currentId()}"
-        render(bookService.createUser() as JSON)
+        render(bookService.createBook() as JSON)
+    }
+
+    def initAllTenants() {
+        Tenants.eachTenant { String tenantId ->
+            bookService.createBook("initEachTenants - ${tenantId}")
+        }
+        render([] as JSON)
+    }
+
+    def initSpecificTenants() {
+        Tenants.withId("amazon") { String tenantId ->
+            bookService.createBook("initSpecificTenants - ${tenantId}")
+        }
+        Tenants.withId("empik") { String tenantId ->
+            bookService.createBook("initSpecificTenants - ${tenantId}")
+        }
+        render([] as JSON)
     }
 
 }

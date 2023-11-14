@@ -2,18 +2,21 @@ package poc.schema.per.tenant
 
 import grails.gorm.multitenancy.CurrentTenant
 import grails.gorm.transactions.Transactional
+import org.grails.orm.hibernate.HibernateDatastore
 
 @CurrentTenant
 class BookService {
 
+    HibernateDatastore hibernateDatastore
 
-    List getUsers() {
+    List getBooks() {
         return Book.list()
     }
 
     @Transactional
-    Book createUser() {
-        return new Book(title: 'aaaa').save(flush: true)
+    Book createBook(final String title = "sample title") {
+        Book sample = new Book(title: title).save(flush: true)
+        return sample
     }
 
 }
